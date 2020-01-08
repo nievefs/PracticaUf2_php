@@ -18,21 +18,24 @@ class Sessio {
 // Función que añada un contenido a un índice determinado de $ _SESSION.
 // Tanto el índice como el contenido se pasarán como parámetros.
     public function afegirContingutSessio($index, $contingut) {
-         return $_SESSION[$index]=$contingut;
+         $_SESSION[$index]=$contingut;
     }
 
 // Función que añada un contenido al final de un vector que es el contenido de un
 // los índices de $ _SESSION. Tanto el índice como el contenido se pasarán como
 // parámetros.
     public function afegirContingutVectorSessio($index, $contingut) {
-        $index =count($_SESSION);
-        return $_SESSION[$index]=$contingut;
-   }
+        $_SESSION[$index][]=$contingut;
+    }    
 
 //Función que devuelve el contenido de $ _SESSION por el índice pasado como parámetro.
 // Si no hay mensaje guardado devuelve null.
     public function llegirContingutSessio($index) {
-       return $_SESSION[$index];
+       return !empty($_SESSION[$index]) ? $_SESSION[$index] : null;
+    }
+
+    public function get($index) {
+        return $_SESSION[$index];
     }
 
 //Función para destruir una session , vaciar la variable $_SESSION
@@ -42,4 +45,3 @@ class Sessio {
 	}
     
 }
-?>

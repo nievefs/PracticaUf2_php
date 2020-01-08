@@ -8,4 +8,6 @@
   Utilice los métodos necesarios de las clases creadas.
  */
 
-?>
+$opcio = $sessio->llegirContingutSessio('opcio');
+$missatge = $sessio->llegirContingutSessio('mensaje');
+

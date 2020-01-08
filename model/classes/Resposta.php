@@ -21,6 +21,19 @@ class Resposta {
     } 
     
     //mètodes accessors
+    public function getContingut(){
+        return $this->contingut;
+    }
 
+    public function getesVerdadera(){
+        return $this->esVerdadera;
+    }
 
+    public function setContingut($contingut){
+         $this->contingut = $contingut;
+    }
+
+    public function setesVerdadera($esVerdadera){
+        $this->esVerdadera = $esVerdadera;
+    }
 }

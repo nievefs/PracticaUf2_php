@@ -18,4 +18,13 @@
   Asignar los resultados leídos en las variables correspondientes de la vista.
  Utilice los métodos necesarios de las clases creadas.*/
 
+ include __DIR__ . '/../constantes.php';
+
+ require RUTA . '../controlador/controladorJoc.php';
+ 
+ $opcio = $sessio->llegirContingutSessio('opcio');
+ $missatge = $sessio->llegirContingutSessio('mensaje');
+ $enunciat = $session->llegirContingutSessio('enunciat');
+ 
+
 ?>

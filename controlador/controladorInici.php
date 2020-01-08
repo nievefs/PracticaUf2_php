@@ -1,4 +1,6 @@
 <?php
+// include RUTA . '/vista/inici.php';
+
 /*
   Este controlador debe controlar si el usuario ha seleccionado jugar o añadir
   pregunta.
@@ -12,25 +14,33 @@
   de la aplicación a controladorPortal.
  */
 
- Class Controladorinici{
-       private $opcio;
-       private $missatge;
-
-       public  function __construct($opcio, $missatge){
-        $this->opcio = $opcio;
-        $this->missatge = $missatge;
-	}
-	
-
- public function jugar(){
-     
- }
-
- public function afegir_prgunta($opcio, $missatge){
-    $missatge = 'Estas afegint una pregunta'; //Estas escogiendo una Pregunta
-    $this->opcio = $opcio;
-    $this->missatge = $missatge;
- }
+// include __DIR__ . '/../constantes.php'; 
 
 
-?>
+require RUTA . '/model/classes/Sessio.php';
+
+$sessio = new Sessio();
+
+if ($sessio->llegirContingutSessio('opcio') !== null) {
+    header('Location: ' . APP_URL . '/controlador/controladorPortal.php');
+  
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                       
+    if (isset($_POST['jugar'])){
+       $sessio->afegirContingutSessio('opcio', 1);
+       $sessio->afegirContingutSessio('mensaje', 'Estas jugando');
+    }
+
+    if (isset($_POST['afegirPregunta'])){
+        $sessio->afegirContingutSessio('opcio', 2);
+        $sessio->afegirContingutSessio('mensaje', 'Estas añaniendiendo una pregunta');
+
+    }
+    header('Location: ' . APP_URL . '/controlador/controladorPortal.php');
+}
+
+include RUTA . '/vista/inici.php';
+
+

@@ -20,4 +20,75 @@
   Piense que una vez guardados los datos necesarios en la sesión, pasaremos el control
   de la aplicación a controladorPortal.
  */
+include __DIR__ . '/../constantes.php';
+require RUTA . '../model/classes/Sessio.php';
+
+require RUTA . '../model/classes/Joc.php';
+require RUTA . '../model/classes/Pregunta.php';
+require RUTA . '../model/classes/Resposta.php';
+
+$joc = new Joc();
+
+$pregunta1 = new Pregunta('Pregunta 1', 'Cinema');
+$pregunta1->afegirResposta(new Resposta('Opcion A', False));
+$pregunta1->afegirResposta(new Resposta('Opcion B', False));
+$pregunta1->afegirResposta(new Resposta('Opcion C', true));
+$pregunta1->afegirResposta(new Resposta('Opcion D', False));
+
+$joc->afegirPregunta($pregunta1);
+
+$pregunta2 = new Pregunta('Pregunta 2', 'Música');
+$pregunta2->afegirResposta(new Resposta('Opcion A', False));
+$pregunta2->afegirResposta(new Resposta('Opcion B', False));
+$pregunta2->afegirResposta(new Resposta('Opcion C', true));
+$pregunta2->afegirResposta(new Resposta('Opcion D', False));
+
+$joc->afegirPregunta($pregunta2);
+
+$pregunta3 = new Pregunta('Pregunta 3', 'Jocs');
+$pregunta3->afegirResposta(new Resposta('Opcion A', False));
+$pregunta3->afegirResposta(new Resposta('Opcion B', False));
+$pregunta3->afegirResposta(new Resposta('Opcion C', true));
+$pregunta3->afegirResposta(new Resposta('Opcion D', False));
+
+$joc->afegirPregunta($pregunta3);
+
+$pregunta4 = new Pregunta('Pregunta 4', 'Informatica');
+$pregunta4->afegirResposta(new Resposta('Opcion A', False));
+$pregunta4->afegirResposta(new Resposta('Opcion B', False));
+$pregunta4->afegirResposta(new Resposta('Opcion C', true));
+$pregunta4->afegirResposta(new Resposta('Opcion D', False));
+
+$joc->afegirPregunta($pregunta4);
+
+$pregunta5 = new Pregunta('Pregunta 5', 'Sport');
+$pregunta5->afegirResposta(new Resposta('Opcion A', False));
+$pregunta5->afegirResposta(new Resposta('Opcion B', False));
+$pregunta5->afegirResposta(new Resposta('Opcion C', true));
+$pregunta5->afegirResposta(new Resposta('Opcion D', False));
+
+$joc->afegirPregunta($pregunta5);
+
+// En este caso este resultado (pregunta más respuestas) corresponde a la opción 3 de portal.php.
+//   Debe guardar la pregunta, el enunciado de la pregunta, respuestas y opción en la sesión mediante las variables "pregunta", "enunciado"
+//   "Respuestas" y "opción".
+
+$session = new Sessio();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                       
+   if (isset($_POST['enviarCategoria'])){
+      $sessio->afegirContingutSessio('opcio', 3);
+      $sessio->afegirContingutVectorSessio('enunciat', 'Pregunta1');
+      $sessio->afegirContingutVectorSessio('resposta', 'Opcion A');
+      $sessio->afegirContingutVectorSessio('resposta', 'Opcion B');
+      $sessio->afegirContingutVectorSessio('resposta', 'Opcion C');
+      $sessio->afegirContingutVectorSessio('resposta', 'Opcion D');
+      
+   }   
+   
+   header('Location: ' . APP_URL . '../controlador/controladorPortal.php');
+}
+
+require RUTA . '/vista/portal.php';
 ?>

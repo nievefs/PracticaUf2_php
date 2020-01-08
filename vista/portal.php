@@ -3,14 +3,15 @@
     <head>
         <title>Portal</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-        <link rel="stylesheet" href="../vista/estil.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo APP_URL ?>/vista/estil.css" type="text/css">
     </head>
     <body>
         <header>MIRA PER ON!</header>
         <div class="subHeader"><?php echo $missatge; ?>!</div>
         <p></p>
         <section id="menu">
-            <form method="post" action="../controlador/controladorPortal.php">
+            <!-- <form method="post" action="../controlador/controladorPortal.php"> -->
+                <form method="post" action="<?php echo APP_URL?>/controlador/controladorPortal.php"> 
                 <article><button type="submit" value="sortir" name="sortir">Sortir</button></article>
             </form>
         </section>
@@ -19,7 +20,8 @@
         ?>
             <footer class="footerPortal">
                 <section>
-                    <form method="post" action="../controlador/controladorPortal.php">
+                    <!-- <form method="post" action="../controlador/controladorPortal.php"> -->
+                    <form method="post" action="<?php echo APP_URL?>/controlador/controladorPortal.php">
                         <p>
                             <label for="categoria">Selecciona una categoria</label>
                             <select name="categoria">
@@ -50,7 +52,8 @@
         ?>
             <footer class="footerPortal">
                 <section>
-                   <form method="post" action="../controlador/controladorPortal.php">
+                   <!-- <form method="post" action="../controlador/controladorPortal.php"> -->
+                   <form method="post" action="index.php?controlador=portal">
                         <p>
                             <label for="pregunta"><?php echo $enunciat; ?></label>
                             <p></p>
